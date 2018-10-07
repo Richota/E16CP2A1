@@ -16,4 +16,34 @@ CREATE TABLE likes(
  date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
  PRIMARY key(user_id, image_id));
 
- 
+ ALTER TABLE likes ADD CONSTRAINT cnt_pk_comps UNIQUE (user_id, image_id);
+
+ pintagram=# INSERT INTO users (name) VALUES ('Usuario2');
+INSERT 0 1
+pintagram=# INSERT INTO users (name) VALUES ('Usuario3');
+INSERT 0 1
+pintagram=# INSERT INTO images (user_id, name) VALUES (1, 'Imagen1_User1');
+
+pintagram=# INSERT INTO images (user_id, name) VALUES (1, 'Img2');
+INSERT 0 1
+pintagram=# INSERT INTO images (user_id, name) VALUES (2, 'Img3');
+INSERT 0 1
+pintagram=# INSERT INTO images (user_id, name) VALUES (2, 'ImgXXX');
+
+INSERT INTO likes (user_id, image_id) VALUES (2, 1);
+INSERT 0 1
+pintagram=# INSERT INTO likes (user_id, image_id) VALUES (3, 1);
+INSERT 0 1
+pintagram=# INSERT INTO likes (user_id, image_id) VALUES (1, 2);
+INSERT INTO likes (user_id, image_id) VALUES (2, 2);
+INSERT 0 1
+pintagram=# INSERT INTO likes (user_id, image_id) VALUES (3, 2);
+INSERT 0 1
+pintagram=# INSERT INTO likes (user_id, image_id) VALUES (1, 3);
+INSERT 0 1
+pintagram=# INSERT INTO likes (user_id, image_id) VALUES (2, 3);
+INSERT 0 1
+pintagram=# INSERT INTO likes (user_id, image_id) VALUES (3, 3);
+
+
+Ricardo Suárez
